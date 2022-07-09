@@ -117,17 +117,17 @@ services:
   shop.client:
     container_name: shop.client
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - "ApiSettings:GatewayAddress=http://ocelotapigw"
-      - "ElasticConfiguration:Uri=http://elasticsearch:9200"
+        - ASPNETCORE_ENVIRONMENT=Development
+        - "ApiSettings:GatewayAddress=http://ocelotapigw"
+        - "ElasticConfiguration:Uri=http://elasticsearch:9200"
     depends_on:
-      - ocelotapigw
-      - catalog.api
-      - basket.api
-      - discount.api
-      - ordering.api
+        - ocelotapigw
+        - catalog.api
+        - basket.api
+        - discount.api
+        - ordering.api
     ports:
-      - "8006:80"
+        - "8006:80"
 
   shop.webstatus:
     container_name: shop.webstatus
@@ -170,40 +170,12 @@ services:
       - "5601:5601"
 
   discount.grpc:
-    container_name: discount.grpc
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "DatabaseSettings:ConnectionString=Server=discountdb;Port=5432;Database=DiscountDb;User Id=admin;Password=admin1234;"
-      - "ElasticConfiguration:Uri=http://elasticsearch:9200"
-    depends_on:
-      - discountdb
+      - ASPNETCORE_URLS=https://+:443;http://+:80
     ports:
-      - "8003:80"
-
-  ocelotapigw:
-    container_name: ocelotapigw
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - "ElasticConfiguration:Uri=http://elasticsearch:9200"
-    depends_on:
-      - catalog.api
-      - basket.api
-      - discount.api
-      - ordering.api
-    ports:
-      - "8010:80"
-
-  shopping.aggregator:
-    container_name: shopping.aggregator
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - "ApiSettings:CatalogUrl=http://catalog.api"
-      - "ApiSettings:BasketUrl=http://basket.api"
-      - "ApiSettings:OrderingUrl=http://ordering.api"
-      - "ElasticConfiguration:Uri=http://elasticsearch:9200"
-    depends_on:
-      - catalog.api
-      - basket.api
-      - ordering.api
-    ports:
-      - "8005:80"
+      - "80"
+      - "443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
