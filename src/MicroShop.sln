@@ -1,53 +1,52 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30114.105
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{D812552C-1E9C-421F-9062-56ABFC2BED66}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{C29352D2-16D8-42EB-A5E5-F76275000758}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basket.API", "Services\Basket\Basket.API\Basket.API.csproj", "{8BBA382F-92A3-4B9E-8A74-073B43790FAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basket.API", "Services\Basket\Basket.API\Basket.API.csproj", "{8BBA382F-92A3-4B9E-8A74-073B43790FAB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{97E91E55-DA01-4062-AACB-5139B768C617}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.API", "Services\Catalog\Catalog.API\Catalog.API.csproj", "{F07D1E9D-2927-4B4B-B104-A42CE3900F9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalog.API", "Services\Catalog\Catalog.API\Catalog.API.csproj", "{F07D1E9D-2927-4B4B-B104-A42CE3900F9B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Discount", "Discount", "{CE7EC81D-F780-4434-B7D8-F83A86F89825}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discount.API", "Services\Discount\Discount.API\Discount.API.csproj", "{5FB3B3F5-ACD1-4798-9770-CEE945BECBCF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discount.API", "Services\Discount\Discount.API\Discount.API.csproj", "{5FB3B3F5-ACD1-4798-9770-CEE945BECBCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discount.Grpc", "Services\Discount\Discount.Grpc\Discount.Grpc.csproj", "{ACADFB38-552B-404B-A4D7-8342D6BAB0A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discount.Grpc", "Services\Discount\Discount.Grpc\Discount.Grpc.csproj", "{ACADFB38-552B-404B-A4D7-8342D6BAB0A8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ordering", "Ordering", "{D5088CC6-59C2-4D14-AA14-D732F9422E85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.API", "Services\Ordering\Ordering.API\Ordering.API.csproj", "{3991246A-1ADF-4926-B677-F37684818FA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.API", "Services\Ordering\Ordering.API\Ordering.API.csproj", "{3991246A-1ADF-4926-B677-F37684818FA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Application", "Services\Ordering\Ordering.Application\Ordering.Application.csproj", "{4E2C6D1E-6D6B-48B8-86B7-ADC2738A1518}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.Application", "Services\Ordering\Ordering.Application\Ordering.Application.csproj", "{4E2C6D1E-6D6B-48B8-86B7-ADC2738A1518}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Domain", "Services\Ordering\Ordering.Domain\Ordering.Domain.csproj", "{84383225-5350-4BF4-9E33-BA9104FE72F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.Domain", "Services\Ordering\Ordering.Domain\Ordering.Domain.csproj", "{84383225-5350-4BF4-9E33-BA9104FE72F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Infrastructure", "Services\Ordering\Ordering.Infrastructure\Ordering.Infrastructure.csproj", "{D68D342E-3EBE-4DAA-92DF-61F19BF3F43A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.Infrastructure", "Services\Ordering\Ordering.Infrastructure\Ordering.Infrastructure.csproj", "{D68D342E-3EBE-4DAA-92DF-61F19BF3F43A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{6ECF4941-5D7E-419B-AEF9-9B727A8A5904}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Logging", "BuildingBlocks\Common.Logging\Common.Logging.csproj", "{EE194630-7205-4E10-9087-587E0A4BF6C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Logging", "BuildingBlocks\Common.Logging\Common.Logging.csproj", "{EE194630-7205-4E10-9087-587E0A4BF6C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus.Messages", "BuildingBlocks\EventBus.Messages\EventBus.Messages.csproj", "{73B3A574-0225-42CB-8F9E-0D5C8F7C0375}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.Messages", "BuildingBlocks\EventBus.Messages\EventBus.Messages.csproj", "{73B3A574-0225-42CB-8F9E-0D5C8F7C0375}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApps", "WebApps", "{C4CE670A-CE6E-44EB-AEC0-CC4A0A50D053}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.Client", "WebApps\Shop.Client\Shop.Client.csproj", "{B178237D-91A8-4F0C-97E2-7E58C5D3A139}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.Client", "WebApps\Shop.Client\Shop.Client.csproj", "{B178237D-91A8-4F0C-97E2-7E58C5D3A139}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.WebStatus", "WebApps\Shop.WebStatus\Shop.WebStatus.csproj", "{77B87616-0343-4669-BC19-5CEE11CED922}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shop.WebStatus", "WebApps\Shop.WebStatus\Shop.WebStatus.csproj", "{77B87616-0343-4669-BC19-5CEE11CED922}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{989D097F-318A-4B8D-8DA2-F59ED32E764F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{8BBA382F-92A3-4B9E-8A74-073B43790FAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -98,6 +97,13 @@ Global
 		{77B87616-0343-4669-BC19-5CEE11CED922}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77B87616-0343-4669-BC19-5CEE11CED922}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77B87616-0343-4669-BC19-5CEE11CED922}.Release|Any CPU.Build.0 = Release|Any CPU
+		{989D097F-318A-4B8D-8DA2-F59ED32E764F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{989D097F-318A-4B8D-8DA2-F59ED32E764F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{989D097F-318A-4B8D-8DA2-F59ED32E764F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{989D097F-318A-4B8D-8DA2-F59ED32E764F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C29352D2-16D8-42EB-A5E5-F76275000758} = {D812552C-1E9C-421F-9062-56ABFC2BED66}
@@ -116,5 +122,8 @@ Global
 		{73B3A574-0225-42CB-8F9E-0D5C8F7C0375} = {6ECF4941-5D7E-419B-AEF9-9B727A8A5904}
 		{B178237D-91A8-4F0C-97E2-7E58C5D3A139} = {C4CE670A-CE6E-44EB-AEC0-CC4A0A50D053}
 		{77B87616-0343-4669-BC19-5CEE11CED922} = {C4CE670A-CE6E-44EB-AEC0-CC4A0A50D053}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2D164D56-CA94-41F4-8866-9D873ABEB9D0}
 	EndGlobalSection
 EndGlobal
