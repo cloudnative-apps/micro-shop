@@ -144,7 +144,7 @@ services:
       - HealthChecksUI__HealthChecks__4__Name=Shopping Aggregator Health Check
       - HealthChecksUI__HealthChecks__4__Uri=http://shopping.aggregator/hc
       - HealthChecksUI__HealthChecks__5__Name=AspnetRunBasics WebMVC Health Check
-      - HealthChecksUI__HealthChecks__5__Uri=http://aspnetrunbasics/hc
+      - HealthChecksUI__HealthChecks__5__Uri=http://shop.client/hc
     ports:
       - "8007:80"
 
@@ -170,12 +170,41 @@ services:
       - "5601:5601"
 
   discount.grpc:
+    container_name: discount.grpc
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - "DatabaseSettings:ConnectionString=Server=discountdb;Port=5432;Database=DiscountDb;User Id=admin;Password=admin1234;"
+      - "ElasticConfiguration:Uri=http://elasticsearch:9200"
+    depends_on:
+      - discountdb
     ports:
-      - "80"
-      - "443"
-    volumes:
-      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - "8003:80"
+  
+
+  ocelotapigw:
+    container_name: ocelotapigw
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ElasticConfiguration:Uri=http://elasticsearch:9200"
+    depends_on:
+        - catalog.api
+        - basket.api
+        - discount.api
+        - ordering.api
+    ports:
+      - "8010:80"
+
+  shopping.aggregator:
+    container_name: shopping.aggregator
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Development
+        - "ApiSettings:CatalogUrl=http://catalog.api"
+        - "ApiSettings:BasketUrl=http://basket.api"
+        - "ApiSettings:OrderingUrl=http://ordering.api"
+        - "ElasticConfiguration:Uri=http://elasticsearch:9200"
+    depends_on:
+        - catalog.api
+        - basket.api
+        - ordering.api
+    ports:
+        - "8005:80"
