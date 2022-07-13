@@ -45,7 +45,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "basket-api",
-          "Port": "80"
+          "Port": "8001"
         }
       ],
       "UpstreamPathTemplate": "/Basket/{userName}",
