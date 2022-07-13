@@ -30,7 +30,10 @@ spec:
           - name: DatabaseSettings__ConnectionString  
             value: Server=discountdb;Port=5432;Database=DiscountDb;User Id=admin;Password=admin1234;
           - name: ElasticConfiguration__Uri
-            value: http://elasticsearch:9200  
+            valueFrom:
+                  configMapKeyRef:
+                    name: shoppingapp-configmap
+                    key: elasticsearch_url
 ---
 apiVersion: v1
 kind: Service

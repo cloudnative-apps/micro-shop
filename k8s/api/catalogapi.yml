@@ -28,9 +28,12 @@ spec:
           - name: ASPNETCORE_ENVIRONMENT
             value: Development
           - name: DatabaseSettings__ConnectionString 
-            value: mongodb://catalogdb:27017
+            value: mongodb://username:password@catalogdb:27017
           - name: ElasticConfiguration__Uri
-            value: http://elasticsearch:9200
+            valueFrom:
+                  configMapKeyRef:
+                    name: shoppingapp-configmap
+                    key: elasticsearch_url
 ---
 apiVersion: v1
 kind: Service

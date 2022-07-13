@@ -32,7 +32,10 @@ spec:
           - name: EventBusSettings__HostAddress
             value: amqp://guest:guest@rabbitmq:5672
           - name: ElasticConfiguration__Uri
-            value: http://elasticsearch:9200
+            valueFrom:
+                  configMapKeyRef:
+                    name: shoppingapp-configmap
+                    key: elasticsearch_url
 ---
 apiVersion: v1
 kind: Service

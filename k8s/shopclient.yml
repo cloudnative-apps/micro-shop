@@ -13,24 +13,30 @@ spec:
         app: shop-client
     spec:
       containers:
-      - name: shop-client
-        image: sharadit/shopclient:latest
-        resources:
-          requests:
-            memory: "64Mi"
-            cpu: "250m"
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
-        ports:
-        - containerPort: 80
-        env:
-          - name: ASPNETCORE_ENVIRONMENT
-            value: Development
-          - name: ApiSettings__GatewayAddress
-            value: http://ocelotapigw
-          - name: ElasticConfiguration__Uri
-            value: http://elasticsearch:9200
+        - name: shop-client
+          image: sharadit/shopclient:latest
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 80
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Development
+            - name: ApiSettings__GatewayAddress
+              valueFrom:
+                configMapKeyRef:
+                  name: shoppingapp-configmap
+                  key: ocelotapigw_url
+            - name: ElasticConfiguration__Uri
+              valueFrom:
+                  configMapKeyRef:
+                    name: shoppingapp-configmap
+                    key: elasticsearch_url
 ---
 apiVersion: v1
 kind: Service
@@ -41,6 +47,6 @@ spec:
   selector:
     app: shop-client
   ports:
-  - port: 8006
-    targetPort: 80
-    nodePort: 31006            
+    - port: 8006
+      targetPort: 80
+      nodePort: 31006

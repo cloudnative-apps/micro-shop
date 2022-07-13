@@ -34,7 +34,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: catalog-db
+  name: catalogdb
 spec:
  # type: NodePort
   selector:

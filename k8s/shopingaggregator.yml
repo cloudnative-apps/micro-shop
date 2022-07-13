@@ -28,13 +28,25 @@ spec:
           - name: ASPNETCORE_ENVIRONMENT
             value: Development
           - name: ApiSettings__CatalogUrl
-            value: http://catalog-api
+            valueFrom:
+                  configMapKeyRef:
+                    name: shoppingapp-configmap
+                    key: catalogapi_url
           - name: ApiSettings__BasketUrl
-            value: http://basket-api
+            valueFrom:
+                  configMapKeyRef:
+                    name: shoppingapp-configmap
+                    key: basketapi_url
           - name: ApiSettings__OrderingUrl
-            value: http://ordering-api
+            valueFrom:
+                  configMapKeyRef:
+                    name: shoppingapp-configmap
+                    key: orderingapi_url
           - name: ElasticConfiguration__Uri
-            value: http://elasticsearch:9200
+            valueFrom:
+                  configMapKeyRef:
+                    name: shoppingapp-configmap
+                    key: elasticsearch_url
 ---
 apiVersion: v1
 kind: Service

@@ -28,7 +28,10 @@ spec:
           - name: ASPNETCORE_ENVIRONMENT
             value: Development
           - name: ElasticConfiguration__Uri
-            value: http://elasticsearch:9200
+            valueFrom:
+                  configMapKeyRef:
+                    name: shoppingapp-configmap
+                    key: elasticsearch_url
 ---
 apiVersion: v1
 kind: Service
