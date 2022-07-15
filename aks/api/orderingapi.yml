@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ocelotapigw
+  name: ordering-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ocelotapigw
+      app: ordering-api
   template:
     metadata:
       labels:
-        app: ocelotapigw
+        app: ordering-api
     spec:
       containers:
-      - name: ocelotapigw
-        image: microshopacr.azurecr.io/ocelotapigw:v1
+      - name: ordering-api
+        image: microshopacr.azurecr.io/orderingapi:v1
         imagePullPolicy: IfNotPresent
         resources:
           requests:
@@ -28,23 +28,28 @@ spec:
         env:
           - name: ASPNETCORE_ENVIRONMENT
             value: Development
+          - name: ConnectionStrings__OrderingConnectionString
+            value: Server=orderdb;Database=OrderDb;User Id=sa;Password=SwN12345678
+          - name: EventBusSettings__HostAddress
+            value: amqp://guest:guest@rabbitmq:5672
           - name: ElasticConfiguration__Uri
             valueFrom:
                   configMapKeyRef:
                     name: shoppingapp-configmap
                     key: elasticsearch_url
       imagePullSecrets:
-        - name: acr-secret
+        - name: acr-secret              
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: ocelotapigw
+  name: ordering-api
 spec:
   type: NodePort
   selector:
-    app: ocelotapigw
+    app: ordering-api
   ports:
-  - port: 8010
+  - port: 8004
     targetPort: 80
-    nodePort: 31010        
+    nodePort: 31004
+            

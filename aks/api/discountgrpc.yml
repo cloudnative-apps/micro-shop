@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ocelotapigw
+  name: discount-grpc
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ocelotapigw
+      app: discount-grpc
   template:
     metadata:
       labels:
-        app: ocelotapigw
+        app: discount-grpc
     spec:
       containers:
-      - name: ocelotapigw
-        image: microshopacr.azurecr.io/ocelotapigw:v1
+      - name: discount-grpc
+        image: microshopacr.azurecr.io/discountgrpc:v1
         imagePullPolicy: IfNotPresent
         resources:
           requests:
-            memory: "64Mi"
-            cpu: ".1"
+            memory: "124Mi"
+            cpu : ".1"
           limits:
             memory: "128Mi"
             cpu: ".3"
@@ -28,6 +28,8 @@ spec:
         env:
           - name: ASPNETCORE_ENVIRONMENT
             value: Development
+          - name: DatabaseSettings__ConnectionString
+            value: Server=discountdb;Port=5432;Database=DiscountDb;User Id=admin;Password=admin1234;
           - name: ElasticConfiguration__Uri
             valueFrom:
                   configMapKeyRef:
@@ -39,12 +41,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ocelotapigw
+  name: discount-grpc
 spec:
-  type: NodePort
+  #type: NodePort
   selector:
-    app: ocelotapigw
+    app: discount-grpc
   ports:
-  - port: 8010
+  - port: 8003
     targetPort: 80
-    nodePort: 31010        
+    #nodePort: 31003

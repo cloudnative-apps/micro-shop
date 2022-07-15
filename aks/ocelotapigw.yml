@@ -34,17 +34,18 @@ spec:
                     name: shoppingapp-configmap
                     key: elasticsearch_url
       imagePullSecrets:
-        - name: acr-secret
+        - name: acr-secret              
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: ocelotapigw
 spec:
-  type: NodePort
+  ##type: NodePort
+  type: LoadBalancer
   selector:
     app: ocelotapigw
   ports:
-  - port: 8010
+  - port: 80
     targetPort: 80
-    nodePort: 31010        
+    #nodePort: 31010        

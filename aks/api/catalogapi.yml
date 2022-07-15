@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ocelotapigw
+  name: catalog-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ocelotapigw
+      app: catalog-api
   template:
     metadata:
       labels:
-        app: ocelotapigw
+        app: catalog-api
     spec:
       containers:
-      - name: ocelotapigw
-        image: microshopacr.azurecr.io/ocelotapigw:v1
+      - name: catalog-api
+        image: microshopacr.azurecr.io/catalogapi:v1
         imagePullPolicy: IfNotPresent
         resources:
           requests:
@@ -28,23 +28,29 @@ spec:
         env:
           - name: ASPNETCORE_ENVIRONMENT
             value: Development
+          - name: DatabaseSettings__ConnectionString 
+            valueFrom:
+                  # configMapKeyRef:
+                  #   name: shopping-db-configmap
+                  #   key: connection_string
+            value: mongodb://username:password@catalogdb:27017
           - name: ElasticConfiguration__Uri
             valueFrom:
                   configMapKeyRef:
                     name: shoppingapp-configmap
                     key: elasticsearch_url
       imagePullSecrets:
-        - name: acr-secret
+       - name: acr-secret
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: ocelotapigw
+  name: catalog-api
 spec:
   type: NodePort
   selector:
-    app: ocelotapigw
+    app: catalog-api
   ports:
-  - port: 8010
+  - port: 8000
     targetPort: 80
-    nodePort: 31010        
+    nodePort: 31000

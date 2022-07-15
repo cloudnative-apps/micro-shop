@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shopingaggregator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shopingaggregator
+  template:
+    metadata:
+      labels:
+        app: shopingaggregator
+    spec:
+      containers:
+      - name: shopingaggregator
+        image: microshopacr.azurecr.io/shoppingaggregator:v1
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: ".1"
+          limits:
+            memory: "128Mi"
+            cpu: ".3"
+        ports:
+        - containerPort: 80
+        env:
+          - name: ASPNETCORE_ENVIRONMENT
+            value: Development
+          - name: ApiSettings__CatalogUrl
+            valueFrom:
+                  configMapKeyRef:
+                    name: shoppingapp-configmap
+                    key: catalogapi_url
+          - name: ApiSettings__BasketUrl
+            valueFrom:
+                  configMapKeyRef:
+                    name: shoppingapp-configmap
+                    key: basketapi_url
+          - name: ApiSettings__OrderingUrl
+            valueFrom:
+                  configMapKeyRef:
+                    name: shoppingapp-configmap
+                    key: orderingapi_url
+          - name: ElasticConfiguration__Uri
+            valueFrom:
+                  configMapKeyRef:
+                    name: shoppingapp-configmap
+                    key: elasticsearch_url
+      imagePullSecrets:
+        - name: acr-secret              
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: shopingaggregator
+spec:
+  type: NodePort
+  selector:
+    app: shopingaggregator
+  ports:
+  - port: 8005
+    targetPort: 80
+    nodePort: 31005
+
