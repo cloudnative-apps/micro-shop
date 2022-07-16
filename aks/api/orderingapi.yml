@@ -14,15 +14,15 @@ spec:
     spec:
       containers:
       - name: ordering-api
-        image: microshopacr.azurecr.io/orderingapi:v1
+        image: shoppingacr2022.azurecr.io/orderingapi:v1
         imagePullPolicy: IfNotPresent
         resources:
-          requests:
-            memory: "64Mi"
-            cpu: ".1"
-          limits:
-            memory: "128Mi"
-            cpu: ".3"
+          # requests:
+          #   memory: "64Mi"
+          #   cpu: ".1"
+          # limits:
+          #   memory: "128Mi"
+          #   cpu: ".3"
         ports:
         - containerPort: 80
         env:

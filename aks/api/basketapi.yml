@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: basket-api
-          image: microshopacr.azurecr.io/basketapi:v1
+          image: shoppingacr2022.azurecr.io/basketapi:v1
           imagePullPolicy: IfNotPresent
           resources:
             requests:

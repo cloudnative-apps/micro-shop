@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: discount-grpc
-        image: microshopacr.azurecr.io/discountgrpc:v1
+        image: shoppingacr2022.azurecr.io/discountgrpc:v1
         imagePullPolicy: IfNotPresent
         resources:
           requests:

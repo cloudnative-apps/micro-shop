@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: shopingaggregator
-        image: microshopacr.azurecr.io/shoppingaggregator:v1
+        image: shoppingacr2022.azurecr.io/shoppingaggregator:v1
         imagePullPolicy: IfNotPresent
         resources:
           requests:

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: ocelotapigw
-        image: microshopacr.azurecr.io/ocelotapigw:v1
+        image: shoppingacr2022.azurecr.io/ocelotapigw:v1
         imagePullPolicy: IfNotPresent
         resources:
           requests:

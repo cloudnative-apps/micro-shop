@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: shop-client
-          image: microshopacr.azurecr.io/shopclient:v1
+          image: shoppingacr2022.azurecr.io/shopclient:v1
           imagePullPolicy: IfNotPresent
           resources:
             requests:

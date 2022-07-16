@@ -14,15 +14,15 @@ spec:
     spec:
       containers:
       - name: catalog-api
-        image: microshopacr.azurecr.io/catalogapi:v1
+        image: shoppingacr2022.azurecr.io/catalogapi:v1
         imagePullPolicy: IfNotPresent
-        resources:
-          requests:
-            memory: "64Mi"
-            cpu: ".1"
-          limits:
-            memory: "128Mi"
-            cpu: ".3"
+        # resources:
+        #   requests:
+        #     memory: "64Mi"
+        #     cpu: ".1"
+        #   limits:
+        #     memory: "128Mi"
+        #     cpu: ".3"
         ports:
         - containerPort: 80
         env:
