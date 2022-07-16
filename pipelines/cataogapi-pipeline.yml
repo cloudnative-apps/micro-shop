@@ -3,8 +3,13 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
 trigger:
-- main
-
+  branches:
+      include:
+      - main
+  paths:
+      include:
+      - src/Services/Catalog/*      
+      - aks/api/basketapi.yml
 resources:
 - repo: self
 
@@ -38,6 +43,7 @@ stages:
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection)
+        buildContext: $(Build.SourcesDirectory)/src
         tags: |
           $(tag)
 
