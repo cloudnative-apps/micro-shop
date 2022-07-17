@@ -78,7 +78,7 @@ stages:
             inputs:
               action: deploy
               manifests: |
-                $(Pipeline.Workspace)/aks/discountapi.yml
+                $(Pipeline.Workspace)/aks/api/discountapi.yml
               imagePullSecrets: |
                 $(imagePullSecret)
               containers: |
