@@ -8,9 +8,8 @@ trigger:
       - main
   paths:
       include:
-      - src/Services/Discount/Discount.Grpc/*      
-      - aks/api/discountgrpc.yml
-
+      - src/Services/Basket/*      
+      - aks/api/basketapi.yml
 resources:
 - repo: self
 
@@ -18,10 +17,9 @@ variables:
 
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '0127715c-adcc-4be0-a176-fafcf35a1dbe'
-  imageRepository: 'discountgrpc'
+  imageRepository: 'basketapi'
   containerRegistry: 'shoppingacr2022.azurecr.io'
-  #dockerfilePath: '**/Dockerfile'  src\Services\Catalog\Catalog.API
-  dockerfilePath: 'src/Services/Discount/Discount.API/Dockerfile'
+  dockerfilePath: 'src/Services/Basket/Basket.API/Dockerfile'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'shoppingacr20223691-auth'
 
@@ -78,7 +76,7 @@ stages:
             inputs:
               action: deploy
               manifests: |
-                $(Pipeline.Workspace)/aks/api/discountgrpc.yml
+                $(Pipeline.Workspace)/aks/api/basketapi.yml
               imagePullSecrets: |
                 $(imagePullSecret)
               containers: |
