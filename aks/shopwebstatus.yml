@@ -29,27 +29,27 @@ spec:
           - name: HealthChecksUI__HealthChecks__0__Name
             value: Catalog Health Check
           - name: HealthChecksUI__HealthChecks__0__Uri
-            value: http://catalog.api/hc
+            value: http://catalog-api:8000/hc
           - name: HealthChecksUI__HealthChecks__1__Name
             value: Basket Health Check
           - name: HealthChecksUI__HealthChecks__1__Uri
-            value: http://basket.api/hc
+            value: http://basket-api/hc
           - name: HealthChecksUI__HealthChecks__2__Name
             value: Discount Health Check
           - name: HealthChecksUI__HealthChecks__2__Uri
-            value: http://discount.api/hc
+            value: http://discount-api:8002/hc
           - name: HealthChecksUI__HealthChecks__3__Name
             value: Ordering Health Check
           - name: HealthChecksUI__HealthChecks__3__Uri
-            value: http://ordering.api/hc
+            value: http://ordering-api:8004/hc
           - name: HealthChecksUI__HealthChecks__4__Name
             value: Shopping Aggregator Health Check
           - name: HealthChecksUI__HealthChecks__4__Uri
-            value: http://shopping.aggregator/hc
+            value: http://shopingaggregator:8005/hc
           - name: HealthChecksUI__HealthChecks__5__Name
             value: AspnetRunBasics WebMVC Health Check
           - name: HealthChecksUI__HealthChecks__5__Uri
-            value: http://shop.client/hc
+            value: http://shop-client/hc
       imagePullSecrets:
         - name: acr-secret              
       
@@ -59,10 +59,10 @@ kind: Service
 metadata:
   name: shop-webstatus
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: shop-webstatus
   ports:
-  - port: 8007
-    targetPort: 80
-    nodePort: 31007
+  - port: 80
+    # targetPort: 80
+    # nodePort: 31007
