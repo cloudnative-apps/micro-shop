@@ -8,8 +8,8 @@ trigger:
       - main
   paths:
       include:
-      - src/Services/Catalog/*      
-      - aks/api/catalogapi.yml
+      - src/Services/Ordering/*      
+      - aks/api/orderingapi.yml
 resources:
 - repo: self
 
@@ -17,9 +17,9 @@ variables:
 
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '0127715c-adcc-4be0-a176-fafcf35a1dbe'
-  imageRepository: 'catalogapi'
+  imageRepository: 'orderingapi'
   containerRegistry: 'shoppingacr2022.azurecr.io'
-  dockerfilePath: 'src/Services/Catalog/Catalog.API/Dockerfile'
+  dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'shoppingacr20223691-auth'
 
@@ -76,7 +76,7 @@ stages:
             inputs:
               action: deploy
               manifests: |
-                $(Pipeline.Workspace)/aks/api/catalogapi.yml
+                $(Pipeline.Workspace)/aks/api/deployment.orderingapi.yml
               imagePullSecrets: |
                 $(imagePullSecret)
               containers: |
