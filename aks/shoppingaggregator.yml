@@ -13,7 +13,7 @@ spec:
         app: shopingaggregator
     spec:
       containers:
-      - name: shopingaggregator
+      - name: shoppingaggregator
         image: shoppingacr2022.azurecr.io/shoppingaggregator:v1
         imagePullPolicy: IfNotPresent
         resources:
