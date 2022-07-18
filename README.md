@@ -150,7 +150,7 @@ Connect to cluster using kubectl
 az aks get-credentials --resource-group micro-shop-rg --name MicroShopAksCluster
 
 shoppingacr.azurecr.io 
-kubectl create secret docker-registry acr-secret --docker-server=shoppingacr2022.azurecr.io --docker-username=shoppingacr2022 --docker-password=uwU0/mfASKSZSELnGvENbK72/7wN4iMX --docker-email=sharadit2011@hotmail.com  
+kubectl create secret docker-registry acr-secret --docker-server=shoppingacr2022.azurecr.io --docker-username=shoppingacr2022 --docker-password=#password# --docker-email=email@email.com  
 
 To verify;
 kubectl get nodes
